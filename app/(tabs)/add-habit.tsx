@@ -51,7 +51,7 @@ const AddHabitScreen = () => {
         return error.message;
       }
 
-      return "error creating habit";
+      return "There was error creating habit";
     }
 
     router.push("/");
