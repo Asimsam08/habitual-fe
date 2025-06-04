@@ -7,6 +7,7 @@ export default function TabsLayout() {
       screenOptions={{
         headerStyle: { backgroundColor: "f5f5f5" },
         headerShadowVisible: false,
+        headerTitleAlign: 'center',
         tabBarStyle: {
           backgroundColor: "f5f5f5",
           borderTopWidth: 0,

@@ -1,6 +1,7 @@
+import HabitualLogo from "@/components/HabitualLogo";
 import { useAuth } from "@/lib/auth-context";
-import { useRouter } from "expo-router";
-import { useState } from "react";
+import { useNavigation, useRouter } from "expo-router";
+import { useLayoutEffect, useState } from "react";
 import { KeyboardAvoidingView, Platform, StyleSheet, View } from "react-native";
 import { Button, Text, TextInput, useTheme } from "react-native-paper";
 
@@ -12,6 +13,13 @@ export default function AuthScreen() {
   const theme = useTheme();
   const { signIn, signUp } = useAuth();
   const router = useRouter();
+  const navigation = useNavigation();
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerShown: false,
+    });
+  }, [navigation]);
 
   const handleAuth = async () => {
     if (!email || !password) {
@@ -38,11 +46,9 @@ export default function AuthScreen() {
       if (error) {
         setError(error);
       }
-      
-        router.replace("/");
-    }
 
-  
+      router.replace("/");
+    }
   };
 
   const handleSwitchMode = () => {
@@ -54,7 +60,9 @@ export default function AuthScreen() {
       style={styles.container}
     >
       <View style={styles.content}>
-        <Text style={styles.title} variant="headlineMedium">
+        <View style={{marginBottom: 34}}> <HabitualLogo /></View>
+       
+        <Text style={styles.title} variant="headlineSmall">
           {" "}
           {isSignUp ? "Create Account" : "Welcome Back"}
         </Text>

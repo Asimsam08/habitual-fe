@@ -1,8 +1,9 @@
+import HabitualLogo from "@/components/HabitualLogo";
 import { DATABASE_ID, databases, HABITS_COLLECTION_ID } from "@/lib/appwrite";
 import { useAuth } from "@/lib/auth-context";
 import { useRouter } from "expo-router";
 import { useState } from "react";
-import { StyleSheet, View } from "react-native";
+import { KeyboardAvoidingView, Platform, StyleSheet, View } from "react-native";
 import { ID } from "react-native-appwrite";
 import {
   Button,
@@ -14,7 +15,6 @@ import {
 
 const FREQUENCIES = ["daily", "weekly", "monthly"];
 type Frequency = (typeof FREQUENCIES)[number];
-console.log("db", DATABASE_ID);
 const AddHabitScreen = () => {
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
@@ -32,7 +32,7 @@ const AddHabitScreen = () => {
 
     try {
       await databases.createDocument(
-        "683d68f2000da7f73d99",
+        DATABASE_ID,
         HABITS_COLLECTION_ID,
         ID.unique(),
         {
@@ -58,39 +58,52 @@ const AddHabitScreen = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <TextInput
-        label="Title"
-        mode="outlined"
-        style={styles.input}
-        onChangeText={setTitle}
-      />
-      <TextInput
-        label="Title"
-        mode="outlined"
-        style={styles.input}
-        onChangeText={setDescription}
-      />
-      <View style={styles.frequencyContainer}>
-        <SegmentedButtons
-          buttons={FREQUENCIES.map((freq) => ({
-            value: freq,
-            label: freq.charAt(0).toUpperCase() + freq.slice(1),
-          }))}
-          onValueChange={(value) => setFrequncy(value)}
-          value={frequency}
-        />
+    <KeyboardAvoidingView
+      style={{ flex: 1, padding: 16 }}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+    >
+      <View style={{ alignItems: "flex-start" }}>
+        <HabitualLogo isText={false} />
       </View>
-      <Button
-        style={styles.button}
-        mode="contained"
-        onPress={handleSubmit}
-        disabled={!title || !description}
-      >
-        Add Habit
-      </Button>
-      {error && <Text style={{ color: theme.colors.error }}>{error}</Text>}
-    </View>
+
+      <View style={styles.container}>
+        <Text variant="headlineSmall" style={styles.title}>
+          Add Habbit
+        </Text>
+
+        <TextInput
+          label="Title"
+          mode="outlined"
+          style={styles.input}
+          onChangeText={setTitle}
+        />
+        <TextInput
+          label="Title"
+          mode="outlined"
+          style={styles.input}
+          onChangeText={setDescription}
+        />
+        <View style={styles.frequencyContainer}>
+          <SegmentedButtons
+            buttons={FREQUENCIES.map((freq) => ({
+              value: freq,
+              label: freq.charAt(0).toUpperCase() + freq.slice(1),
+            }))}
+            onValueChange={(value) => setFrequncy(value)}
+            value={frequency}
+          />
+        </View>
+        <Button
+          style={styles.button}
+          mode="contained"
+          onPress={handleSubmit}
+          disabled={!title || !description}
+        >
+          Add Habit
+        </Button>
+        {error && <Text style={{ color: theme.colors.error }}>{error}</Text>}
+      </View>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -98,7 +111,6 @@ export default AddHabitScreen;
 
 const styles = StyleSheet.create({
   container: {
-    padding: 16,
     flex: 1,
     backgroundColor: "f5f5f5",
     justifyContent: "center",
@@ -111,5 +123,10 @@ const styles = StyleSheet.create({
   },
   button: {
     marginBottom: 8,
+  },
+  title: {
+    fontWeight: "bold",
+    marginBottom: 16,
+    textAlign: "center",
   },
 });
