@@ -18,12 +18,13 @@ type Frequency = (typeof FREQUENCIES)[number];
 const AddHabitScreen = () => {
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
-
   const [frequency, setFrequncy] = useState<Frequency>("daily");
   const [error, setError] = useState("");
   const { user } = useAuth();
   const router = useRouter();
   const theme = useTheme();
+
+  // add habit handler
 
   const handleSubmit = async () => {
     if (!user) {
@@ -45,6 +46,12 @@ const AddHabitScreen = () => {
           created_at: new Date().toISOString(),
         }
       );
+
+       setTitle('');
+    setDescription('');
+    setFrequncy('daily');
+
+      router.push("/");
     } catch (error) {
       if (error instanceof Error) {
         setError(error.message);
@@ -53,8 +60,6 @@ const AddHabitScreen = () => {
 
       return "There was error creating habit";
     }
-
-    router.push("/");
   };
 
   return (
@@ -76,12 +81,14 @@ const AddHabitScreen = () => {
           mode="outlined"
           style={styles.input}
           onChangeText={setTitle}
+          value={title}
         />
         <TextInput
           label="Title"
           mode="outlined"
           style={styles.input}
           onChangeText={setDescription}
+          value={description}
         />
         <View style={styles.frequencyContainer}>
           <SegmentedButtons
@@ -128,5 +135,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginBottom: 16,
     textAlign: "center",
+    color : "#412C6B"
   },
 });

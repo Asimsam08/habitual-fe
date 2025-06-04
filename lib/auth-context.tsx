@@ -30,9 +30,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setUser(null);
     } catch (error) {
       if (error) {
-        return console.error(error)
+        return console.error(error);
       }
-     
     }
   };
 
@@ -61,9 +60,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const signIn = async (email: string, password: string) => {
     try {
-      const erro =await account.createEmailPasswordSession(email, password);
-      console.log("neweer",erro)
-        const session = await account.get();
+      const erro = await account.createEmailPasswordSession(email, password);
+
+      const session = await account.get();
       setUser(session);
       return null;
     } catch (error) {

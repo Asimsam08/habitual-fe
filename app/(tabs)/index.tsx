@@ -1,3 +1,4 @@
+import HabitCard from "@/components/HabitCard";
 import HabitualLogo from "@/components/HabitualLogo";
 import {
   client,
@@ -14,7 +15,7 @@ import { useEffect, useRef, useState } from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
 import { ID, Query } from "react-native-appwrite";
 import { Swipeable } from "react-native-gesture-handler";
-import { Button, Surface, Text } from "react-native-paper";
+import { Button, Text } from "react-native-paper";
 
 export default function Index() {
   const { signOut, user } = useAuth();
@@ -225,33 +226,7 @@ export default function Index() {
                   swipeableRefs.current[habit.$id]?.close();
                 }}
               >
-                <Surface style={styles.card} elevation={0}>
-                  <View style={styles.cardContent}>
-                    <Text style={styles.cardTitle}>{habit.title}</Text>
-                    <Text style={styles.cardDescription}>
-                      {habit.description}
-                    </Text>
-
-                    <View style={styles.cardFooter}>
-                      <View style={styles.streakBadge}>
-                        <MaterialCommunityIcons
-                          name="fire"
-                          size={18}
-                          color="#ff9800"
-                        />
-                        <Text style={styles.streakText}>
-                          {habit.streak_count} day streak
-                        </Text>
-                      </View>
-                      <View style={styles.frequencyBadge}>
-                        <Text style={styles.frequencyText}>
-                          {habit.frequency.charAt(0).toUpperCase() +
-                            habit.frequency.slice(1)}
-                        </Text>
-                      </View>
-                    </View>
-                  </View>
-                </Surface>
+                <HabitCard key={habit.id} habits={habit} />
               </Swipeable>
             );
           })
@@ -273,66 +248,13 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     marginBottom: 24,
   },
-  title: {
+    title: {
     fontWeight: "bold",
     marginBottom : 16,
     textAlign : "center",
+    color : "#412C6B"
   },
-  card: {
-    marginBottom: 18,
-    borderRadius: 18,
-    backgroundColor: "white",
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.08,
-    shadowRadius: 8,
-    elevation: 4,
-  },
-  cardContent: {
-    padding: 20,
-  },
-  cardTitle: {
-    fontSize: 20,
-    fontWeight: "bold",
-    marginBottom: 4,
-    color: "#22223b",
-  },
-  cardDescription: {
-    fontSize: 15,
-    marginBottom: 16,
-    color: "#6c6c80",
-  },
-  cardFooter: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  streakBadge: {
-    flexDirection: "row",
-    alignItems: "center",
-    backgroundColor: "#fff3e0",
-    borderRadius: 12,
-    paddingHorizontal: 10,
-    paddingVertical: 4,
-  },
-  streakText: {
-    marginLeft: 4,
-    color: "ff9800",
-    fontSize: 14,
-    fontWeight: "bold",
-  },
-  frequencyBadge: {
-    backgroundColor: "#ede7f6",
-    borderRadius: 12,
-    paddingHorizontal: 10,
-    paddingVertical: 4,
-  },
-  frequencyText: {
-    marginLeft: 4,
-    color: "#7c4dff",
-    fontSize: 14,
-    fontWeight: "bold",
-  },
+
   emptyState: {
     flex: 1,
     justifyContent: "center",

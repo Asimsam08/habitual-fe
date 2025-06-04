@@ -41,15 +41,13 @@ export default function AuthScreen() {
       }
     } else {
       const error = await signIn(email, password);
-      console.log("errorState", error);
+
       if (error) {
-        console.log("siside err state");
         setError(error);
-      }else {
-  router.replace("/");
+      } else {
+        router.replace("/");
       }
     }
-  
   };
 
   const handleSwitchMode = () => {
@@ -120,6 +118,7 @@ const styles = StyleSheet.create({
   title: {
     textAlign: "center",
     marginBottom: 24,
+    color: "#674FA4",
   },
   input: {
     marginBottom: 16,
