@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 28,
     fontWeight: "bold",
-    color: "#1a1a1a",
+    color: "#4B3A7B",
     letterSpacing: 1.4,
   },
 });
