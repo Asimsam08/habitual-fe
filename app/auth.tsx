@@ -32,23 +32,24 @@ export default function AuthScreen() {
       return;
     }
     setError(null);
-    console.log("handler");
 
     if (isSignUp) {
-      console.log("singn");
       const error = await signUp(email, password);
+
       if (error) {
         setError(error);
       }
     } else {
-      console.log("login");
       const error = await signIn(email, password);
+      console.log("errorState", error);
       if (error) {
+        console.log("siside err state");
         setError(error);
+      }else {
+  router.replace("/");
       }
-
-      router.replace("/");
     }
+  
   };
 
   const handleSwitchMode = () => {
@@ -60,8 +61,11 @@ export default function AuthScreen() {
       style={styles.container}
     >
       <View style={styles.content}>
-        <View style={{marginBottom: 34}}> <HabitualLogo /></View>
-       
+        <View style={{ marginBottom: 34 }}>
+          {" "}
+          <HabitualLogo />
+        </View>
+
         <Text style={styles.title} variant="headlineSmall">
           {" "}
           {isSignUp ? "Create Account" : "Welcome Back"}

@@ -61,7 +61,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const signIn = async (email: string, password: string) => {
     try {
-      await account.createEmailPasswordSession(email, password);
+      const erro =await account.createEmailPasswordSession(email, password);
+      console.log("neweer",erro)
         const session = await account.get();
       setUser(session);
       return null;

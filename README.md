@@ -1,50 +1,31 @@
-# Welcome to your Expo app 👋
+# Welcome to our Expo app 👋
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This is a modern Habit Tracker app named Habitual using React Native, Appwrite, Expo. This app allows users to track their daily habits, and manage habit completions with a sleek UI.
 
-## Get started
+Tech Stack
+React Native – For building native apps
+Expo – For simplifying the React Native development
+Appwrite – For backend and real-time database
+React Hooks – For managing component state and side-effects
+TypeScript  – Type safety and tooling
+GitHub - for version control
 
-1. Install dependencies
 
-   ```bash
-   npm install
-   ```
 
-2. Start the app
+ Features
+🚀 User Authentication Users can sign up, sign in, and manage their authentication state with Appwrite. 
 
-   ```bash
-   npx expo start
-   ```
+✅ Add/Complete Habits Add new habits, mark them as completed, and delete them from your list.
 
-In the output, you'll find options to open the app in a
+🔄 Real-Time Data Sync your habits and completions in real-time with Appwrite.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+📱 Responsive Design Use Expo's built-in features to create a mobile-first, responsive design.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
 
-## Get a fresh project
+git clone https://github.com/Asimsam08/habitual-fe.git
+cd habitual-fe
+npm install
+npx expo start
 
-When you're ready, run:
 
-```bash
-npm run reset-project
-```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
