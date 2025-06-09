@@ -21,6 +21,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [loadingUser, SetLoadingUser] = useState<boolean>(true);
 
   useEffect(() => {
+    console.log("running")
     getUser();
   }, []);
 
