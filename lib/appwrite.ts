@@ -18,3 +18,49 @@ export interface RealtimeResponse {
   events: string[];
   payload: any;
 }
+
+// type EnvConfig = {
+//   appwriteEndpoint: string;
+//   appwriteProjectId: string;
+//   appwritePlatform: string;
+//   dbId: string;
+//   habitsCollectionId: string;
+//   habitsCompletionsId: string;
+// };
+
+// import { Account, Client, Databases } from "react-native-appwrite";
+
+// import Constants from 'expo-constants';
+
+// // Safely access extra with fallback
+// const extra = (Constants.expoConfig?.extra || {}) as EnvConfig;
+
+// export const {
+//   appwriteEndpoint,
+//   appwriteProjectId,
+//   appwritePlatform,
+//   dbId,
+//   habitsCollectionId,
+//   habitsCompletionsId,
+// } = extra;
+// export const client = new Client()
+//   .setEndpoint(appwriteEndpoint)
+//   .setProject(appwriteProjectId)
+//   .setPlatform(appwritePlatform);
+
+// export const account = new Account(client);
+// export const databases = new Databases(client);
+
+// export const DATABASE_ID = dbId;
+// export const HABITS_COLLECTION_ID =
+//   habitsCollectionId;
+// export const COMPLETIONS_COLLECTION_ID =
+//   habitsCompletionsId;
+
+// export interface RealtimeResponse {
+//   events: string[];
+//   payload: any;
+// }
+
+
+

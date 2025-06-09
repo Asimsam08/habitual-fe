@@ -84,7 +84,7 @@ const AddHabitScreen = () => {
           value={title}
         />
         <TextInput
-          label="Title"
+          label="Description"
           mode="outlined"
           style={styles.input}
           onChangeText={setDescription}

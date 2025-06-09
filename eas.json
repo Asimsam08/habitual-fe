@@ -1,0 +1,36 @@
+{
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+             "android": {
+        "buildType": "apk"
+      },
+
+      "env": {
+      "EXPO_PUBLIC_APPWRITE_ENDPOINT": "https://fra.cloud.appwrite.io/v1",
+        "EXPO_PUBLIC_APPWRITE_PROJECT_ID": "683b16d0001f278723b0",
+        "EXPO_PUBLIC_APPWRITE_PLATFORM": "com.asimsam.habitual",
+        "EXPO_PUBLIC_DB_ID": "683d68f2000da7f73d99",
+        "EXPO_PUBLIC_HABITS_COLLECTION_ID": "683d692c000606b78b59",
+        "EXPO_PUBLIC_HABITS_COMPLETIONS_ID": "683ef1be00389c505168"
+      }
+    },
+    "production": {
+      "developmentClient": false,
+      "distribution": "store",
+   "android": {
+        "buildType": "apk"
+      },
+
+      "env": {
+        "EXPO_PUBLIC_APPWRITE_ENDPOINT": "https://fra.cloud.appwrite.io/v1",
+        "EXPO_PUBLIC_APPWRITE_PROJECT_ID": "683b16d0001f278723b0",
+        "EXPO_PUBLIC_APPWRITE_PLATFORM": "com.asimsam.habitual",
+        "EXPO_PUBLIC_DB_ID": "683d68f2000da7f73d99",
+        "EXPO_PUBLIC_HABITS_COLLECTION_ID": "683d692c000606b78b59",
+        "EXPO_PUBLIC_HABITS_COMPLETIONS_ID": "683ef1be00389c505168"
+      }
+    }
+  }
+}
